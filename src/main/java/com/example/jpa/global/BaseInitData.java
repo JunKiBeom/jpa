@@ -17,6 +17,11 @@ public class BaseInitData
     @Bean
     public ApplicationRunner applicationRunner() {
         return  args -> {
+
+            if (postService.count() > 0) {
+                return;
+            }
+
             System.out.println("applicationRunner");
             // 샘플 데이터 3개 생성
 
