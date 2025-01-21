@@ -19,9 +19,8 @@ import java.util.List;
 @Builder
 @EntityListeners(AuditingEntityListener.class)
 public class Post {
-
-    @Id // Primary Key
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // Auto Increment
+    @Id // PRIMARY KEY
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // AUTO_INCREMENT
     @Setter(AccessLevel.PRIVATE)
     private Long id; // long -> null X, Long -> null O
 
@@ -38,7 +37,7 @@ public class Post {
     @Column(columnDefinition = "TEXT")
     private String body;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(mappedBy="post", cascade = CascadeType.ALL)
     @Builder.Default
     private List<Comment> comments = new ArrayList<>();
 
